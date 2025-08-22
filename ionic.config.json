@@ -1,0 +1,7 @@
+{
+  "name": "Didis-rev-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

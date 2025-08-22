@@ -1,0 +1,30 @@
+//// For information on how to create your own theme, please see:
+//// http://ionicframework.com/docs/theming/
+//
+//:root {
+//  --ion-background-color: linear-gradient(135deg, #EE9CA7 0%, #FFDDE1 100%)
+//}
+//
+//
+//@media(prefers-color-scheme: dark) {
+//  :root {
+//    --ion-background-color: linear-gradient(135deg, #614385 0%, #516395 100%)
+//  }
+//}
+
+:root {
+}
+
+body, ion-app, ion-content {
+  --background: linear-gradient(135deg, #D4145A 0%, #FBB03B 100%);
+  --ion-color-primary: #ff7a59;
+  --ion-color-primary-contrast: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  body, ion-app, ion-content {
+    --background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+    --ion-color-primary: #76eaff;
+    --ion-color-primary-contrast: #0b0f19;
+  }
+}

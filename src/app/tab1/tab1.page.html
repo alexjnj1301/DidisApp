@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      pas caca non plus ou quoi
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="testTitle">
+    <ion-button routerLink="/login">coucou</ion-button>
+  </div>
+  <ion-accordion-group class="accordion_group">
+    @for (lesson of lessonsList; track lesson.id) {
+      <ion-accordion>
+        <ion-item slot="header" color="light">
+          <ion-label>{{lesson.title}}</ion-label>
+        </ion-item>
+      </ion-accordion>
+    }
+  </ion-accordion-group>
+</ion-content>
