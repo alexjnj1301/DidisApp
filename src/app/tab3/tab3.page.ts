@@ -7,6 +7,7 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
+  standalone: true
 })
 export class Tab3Page {
   constructor() {}
