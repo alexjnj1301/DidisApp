@@ -10,12 +10,18 @@
   <div class="testTitle">
     <ion-button routerLink="/login">coucou</ion-button>
   </div>
-  <ion-accordion-group class="accordion_group">
+  <ion-accordion-group class="accordion_group" [multiple]="true">
     @for (lesson of lessonsList; track lesson.id) {
       <ion-accordion>
         <ion-item slot="header" color="light">
           <ion-label>{{lesson.title}}</ion-label>
         </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-chip class="lesson-chip" [routerLink]="['/lesson', lesson.id]">
+            Leçon
+            <ion-icon class="reveal" name="arrow-forward"></ion-icon>
+          </ion-chip>
+        </div>
       </ion-accordion>
     }
   </ion-accordion-group>
