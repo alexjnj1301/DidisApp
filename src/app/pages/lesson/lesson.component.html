@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Leçon {{ id }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (loaded) {
+    <ion-card class="image-card" (click)="setOpen(true)">
+      <div class="row">
+        <ion-img class="thumb" [src]="src"></ion-img>
+        <div class="meta">
+          <ion-card-title>{{ title }}</ion-card-title>
+          <p class="desc">{{ description }}</p></div>
+      </div>
+    </ion-card>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="setOpen(false)">
+                <ion-icon name="close-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button (click)="downloadImage()">
+                <ion-icon name="cloud-download-outline"></ion-icon>
+                &nbsp;
+                Télécharger l'image
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content [fullscreen]="true">
+          <ion-img [src]="src"></ion-img>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <swiper-container
+      effect="cards"
+      zoom="true"
+      slides-per-view="1"
+      centered-slides="true"
+      space-between="16"
+      pagination="true"
+      pagination-clickable="true"
+      pagination-renderBullet="{{bullets}}"
+      class="lesson-swiper">
+
+      @for (card of cards; track card.id) {
+        <swiper-slide>
+          <ion-card class="lesson-card"
+                    [class.flipped]="isFlipped(card.id)"
+                    (click)="toggleFlip(card.id)">
+            <div class="flip-inner">
+              <div class="face front">
+                <div class="edit_container">
+                  <ion-button fill="clear" size="small" (click)="editCard(card); $event.stopPropagation();">
+                    <ion-icon name="create-outline"></ion-icon>
+                  </ion-button>
+                  <ion-button fill="clear" size="small" (click)="deleteCard(card.id); $event.stopPropagation();">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </ion-button>
+                </div>
+                <ion-card-header>
+                  <ion-card-title>{{ card.question }}</ion-card-title>
+                </ion-card-header>
+              </div>
+
+              <div class="face back">
+                <div class="edit_container">
+                  <ion-button fill="clear" size="small" (click)="editCard(card); $event.stopPropagation();">
+                    <ion-icon name="create-outline"></ion-icon>
+                  </ion-button>
+                  <ion-button fill="clear" size="small" (click)="deleteCard(card.id); $event.stopPropagation();">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </ion-button>
+                </div>
+                <ion-card-header>
+                  <ion-card-title>Réponse</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <p>{{ card.answer }}</p>
+                </ion-card-content>
+              </div>
+            </div>
+          </ion-card>
+        </swiper-slide>
+      }
+    </swiper-container>
+  } @else {
+    <ion-list class="no-bg">
+      <ion-list-header>
+        <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+      </ion-list-header>
+      <ion-item class="no-bg">
+        <ion-thumbnail slot="start" class="no-bg">
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label class="no-bg">
+          <h3>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  }
+</ion-content>

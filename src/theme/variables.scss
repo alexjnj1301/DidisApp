@@ -19,6 +19,13 @@ body, ion-app, ion-content {
   --background: linear-gradient(135deg, #D4145A 0%, #FBB03B 100%);
   --ion-color-primary: #ff7a59;
   --ion-color-primary-contrast: #ffffff;
+  ion-chip {
+    --background: var(--ion-color-primary);
+    --color: white;
+    ion-icon {
+      color: #ffe3db;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,5 +33,12 @@ body, ion-app, ion-content {
     --background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
     --ion-color-primary: #76eaff;
     --ion-color-primary-contrast: #0b0f19;
+    ion-chip {
+      --background: #00213f;
+      --color: var(--ion-color-primary);
+      ion-icon {
+        color: #5b9aa8;
+      }
+    }
   }
 }

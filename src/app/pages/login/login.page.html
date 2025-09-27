@@ -7,11 +7,6 @@
 
   <div class="container">
     <ion-input-otp length="4" pattern="[\p{N}]" fill="solid" size="small" [(ngModel)]="pin" (ionComplete)="onComplete()">Normalement tu vas trouver le code eheheh</ion-input-otp>
-<!--    <div class="btn-ctnr">-->
-<!--      <ion-button (click)="login()">Valider</ion-button>-->
-<!--    </div>-->
-    @if (alertMessage) {
-      {{ alertMessage }}
-    }
+    <ion-toast [isOpen]="openAlert" [buttons]="toastButtons" [message]="alertMessage" (didDismiss)="setOpen(false)"></ion-toast>
   </div>
 </ion-content>
