@@ -15,7 +15,7 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
-  IonItem,
+  IonItem, IonItemOption, IonItemOptions, IonItemSliding,
   IonLabel,
   IonList,
   IonListHeader,
@@ -55,6 +55,9 @@ import { PhotoService } from '../../services/photo.service'
     IonCardContent,
     IonFab,
     IonFabButton,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
 
   ],
   standalone: true,
@@ -80,6 +83,9 @@ export class LessonComponent  implements OnInit {
   public files: File[] = []
   public filesToSend: number = 0
   public modalImgUrl: string = ''
+  public flipped = new Set<number>()
+  public isCardViewReady: boolean = false
+
 
   constructor(private alertCtrl: AlertController,
               protected photoService: PhotoService) { }
@@ -127,8 +133,6 @@ export class LessonComponent  implements OnInit {
       }
     ]
   }
-
-  flipped = new Set<number>()
 
   isFlipped(id: number) {
     return this.flipped.has(id)

@@ -73,6 +73,19 @@ ion-item {
   z-index: 10;
 }
 
+.QA-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: transparent;
+}
+
+.QA-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  background-color: var(--ion-card-background, #fff);
+}
+
 /////////
 .lesson-cards-container {
   display: grid;
